@@ -1,0 +1,107 @@
+/* Sidebar.css */
+
+.App {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 25%; /* Sidebar width */
+    height: 100vh; /* Full height */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #4a4a4a;
+}
+
+.new-chat-button {
+    background-color: transparent; /* Make the button transparent */
+    color: black; /* Change text color to match the theme */
+    border: none; /* Remove border */
+    padding: 10px 0; /* Adjust padding for a cleaner look */
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 80%; /* Keep the width as needed */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px;
+    margin-left: 28px;
+}
+
+
+.tab-container {
+    margin-top: 20px; /* Space above the tabs */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow this section to take up available space */
+}
+
+.tab-button {
+    background-color: transparent; /* Make the button transparent */
+    color: black; /* Change text color to black */
+    border: none; /* Remove border */
+    padding: 10px;
+    margin-bottom: 10px; /* Space between tabs */
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.tab-button:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
+    color: #0056b3; /* Optional: Change text color on hover */
+}
+
+.sidebar-bottom {
+    margin-top: auto; /* Pushes the profile and logout buttons to the bottom */
+    padding: 20px; /* Optional padding for spacing */
+}
+.new-chat-button:hover {
+    background-color: #d9d9d9;
+  }
+
+.profile-button {
+    background-color: transparent; /* Make the button transparent */
+    color: black; /* Change text color to black */
+    border: none; /* Remove border */
+    padding: 10px; /* Adjust padding for consistency */
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Ensure button spans full width */
+    text-align: left; /* Align text to the left */
+    font-weight: bold; /* Make text bold */
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Space between profile and logout buttons */
+}
+
+.profile-button:hover {
+    background-color: #abacad;
+}
+
+.logout-button {
+    background-color: #b4bbc4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+}
+
+.logout-button:hover {
+    background-color: #5cceff;
+}
+
+.profile-text {
+    margin-left: 20px; /* Ensures additional spacing for the text if needed */
+}

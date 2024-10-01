@@ -12,6 +12,7 @@ import {
 import { Avatar } from "@chatscope/chat-ui-kit-react";
 import chaticon from "../assets/chaticon.png";
 import usericon from "../assets/usericon.png";
+import Sidebar from "./Sidebar"; // Import the Sidebar component
 import { useNavigate } from "react-router-dom";
 
 const API_KEY =
@@ -252,19 +253,11 @@ function ChatAi() {
         ]);
     };
 
-    const handleTabClick = (message) => {
-        setMessages((prevMessages) => [
-            ...prevMessages,
-            {
-                message,
-                sender: "user",
-            },
-        ]);
-        processMessageToChatGPT([...messages, { message, sender: "user" }]);
+    const handleTabClick = (tab) => {
+        console.log(`Switched to tab: ${tab}`);
     };
 
-    // Check cookie and navigate logic
-    const checkCookieAndNavigate = () => {
+    const handleProfileBtn = () => {
         const userRole = getCookie("userRole");
         if (userRole === "parent") {
             navigate("/parent-profile");
@@ -273,101 +266,48 @@ function ChatAi() {
         }
     };
 
-    const handleProfileBtn = () => {
-        // Simply call the function to check and navigate on button click
-        checkCookieAndNavigate();
-    };
-
-    const handleLogout = () => {
-        const deleteCookie = (name) => {
-            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-        };
-
-        deleteCookie("userRole");
-
-        navigate("/");
-    };
-
     return (
-        <div className="ChatAi">
-            <div className="sidebar">
-                <h2>Digital Therapy</h2>
-                <button className="new-chat-button" onClick={handleNewChat}>
-                    <span className="icon">+</span>
-                    New Chat
-                </button>
-                <div className="tab-container">
-                    <button
-                        className="tab-button"
-                        onClick={() => handleTabClick("How to reduce stress")}
-                    >
-                        How to reduce stress?
-                    </button>
-                    <button
-                        className="tab-button"
-                        onClick={() => handleTabClick("I am not well")}
-                    >
-                        I am not well
-                    </button>
-                    <button
-                        className="tab-button"
-                        onClick={() =>
-                            handleTabClick("My friends tried to tease me")
-                        }
-                    >
-                        My friends tried to tease me
-                    </button>
-                </div>
+        <div className="App">
+            {/* Sidebar Component */}
+            <Sidebar
+                handleNewChat={handleNewChat}
+                handleTabClick={handleTabClick}
+                handleProfileBtn={handleProfileBtn}
+                handleSend={handleSend}
+            />
 
-                {/* Profile button at the bottom */}
-                <div className="sidebar-bottom">
-                    <button className="profile-button" onClick={handleLogout}>
-                        <span className="profile-text">Logout</span>
-                    </button>
-
-                    <button
-                        className="profile-button"
-                        onClick={handleProfileBtn}
-                    >
-                        <Avatar src={usericon} name="profile " />
-                        <span className="profile-text">Profile</span>
-                    </button>
-                </div>
-            </div>
-
-            <div className="main">
+            {/* Chat Area */}
+            <div className="chat-container">
                 <MainContainer>
                     <ChatContainer>
-                        <MessageList ref={messageListRef}>
-                            {messages.map((msg, index) => (
+                        <MessageList typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}>
+                            {messages.map((message, i) => (
                                 <Message
-                                    key={index}
+                                    key={i}
                                     model={{
-                                        message: msg.message,
-                                        sender: msg.sender,
+                                        message: message.message,
+                                        sentTime: message.sentTime,
+                                        sender: message.sender,
                                         direction:
-                                            msg.sender === "ChatGPT"
+                                            message.sender === "ChatGPT"
                                                 ? "incoming"
                                                 : "outgoing",
-                                        sentTime: msg.sentTime,
                                     }}
                                 >
-                                    {msg.sender === "ChatGPT" && (
-                                        <Avatar src={chaticon} name="ChatGPT" />
-                                    )}
-                                    {msg.sender !== "ChatGPT" && (
-                                        <Avatar src={usericon} name="User" />
-                                    )}
+                                    <Avatar
+                                        src={
+                                            message.sender === "ChatGPT"
+                                                ? chaticon
+                                                : usericon
+                                        }
+                                        name={message.sender}
+                                    />
                                 </Message>
                             ))}
-                            {isTyping && (
-                                <TypingIndicator content="Digital Therapy is typing..." />
-                            )}
                         </MessageList>
                         <MessageInput
                             placeholder="Type a message..."
                             onSend={handleSend}
-                            attachButton={false}
                         />
                     </ChatContainer>
                 </MainContainer>

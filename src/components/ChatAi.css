@@ -1,127 +1,38 @@
 .ChatAi {
-  display: flex;
-  height: 100vh;
-}
-
-.sidebar {
-  width: 300px;
-  background-color: #f0f0f0;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar h2 {
-  text-align: center; /* Center the title */
-  margin-bottom: 40px; /* Space between title and New Chat button */
+    display: flex;
+    height: 100vh;
 }
 
 .new-chat-button {
-  background-color: transparent; /* Make the button transparent */
-  color: black; /* Change text color to black */
-  border: none; /* Remove border */
-  padding: 10px; /* Adjust padding for consistency */
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%; /* Ensure button spans full width */
-  text-align: left; /* Align text to the left */
-  font-weight: bold; /* Make text bold */
+    background-color: transparent; /* Make the button transparent */
+    color: black; /* Change text color to black */
+    border: none; /* Remove border */
+    padding: 10px; /* Adjust padding for consistency */
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Ensure button spans full width */
+    text-align: left; /* Align text to the left */
+    font-weight: bold; /* Make text bold */
 }
 
 .new-chat-button .icon {
-  margin-right: 5px; /* Space between icon and text */
-}
-
-.new-chat-button:hover {
-  background-color: #0056b3;
-}
-
-.tab-container {
-  margin-top: 20px; /* Space above the tabs */
-  display: flex;
-  flex-direction: column;
-}
-
-.tab-button {
-  background-color: transparent; /* Make the button transparent */
-  color: black; /* Change text color to black */
-  border: none; /* Remove border */
-  padding: 10px;
-  margin-bottom: 10px; /* Space between tabs */
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: left;
-
-}
-
-.tab-button:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* Light background on hover */
-  color: #0056b3; /* Optional: Change text color on hover */
+    margin-right: 5px; /* Space between icon and text */
 }
 
 .main {
-  flex: 1;
-  display: flex;
+    flex: 1;
+    display: flex;
 }
 .chatgpt-logo {
-  width: 30px; /* Adjust as needed */
-  height: 30px; /* Adjust as needed */
-  margin-right: 10px; /* Space between logo and message */
-  vertical-align: middle; /* Align with text */
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    margin-right: 10px; /* Space between logo and message */
+    vertical-align: middle; /* Align with text */
 }
 
 .user-logo {
-  width: 30px; /* Adjust as needed */
-  height: 30px; /* Adjust as needed */
-  margin-right: 10px; /* Space between logo and message */
-  vertical-align: middle; /* Align with text */
-}
-
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Ensures the profile button is at the bottom */
-  height: 100%;
-  width: 300px;
-  background-color: #f0f0f0;
-  padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-
-
-.tab-container {
-  margin-top: 20px; /* Space above the tabs */
-  display: flex;
-  flex-direction: column;
-}
-
-
-.sidebar-bottom {
-  margin-top: auto; /* Pushes the profile button to the bottom */
-}
-
-.profile-button {
-  background-color: transparent; /* Make the button transparent */
-  color: black; /* Change text color to black */
-  border: none; /* Remove border */
-  padding: 10px; /* Adjust padding for consistency */
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100%; /* Ensure button spans full width */
-  text-align: left; /* Align text to the left */
-  font-weight: bold; /* Make text bold */
-  display: flex;
-  align-items: center;
-}
-
-.profile-button .icon {
-  margin-right: 5px; /* Space between icon and text */
-}
-
-.profile-button:hover {
-  background-color: #0056b3;
-}
-
-.profile-text {
-  margin-left: 20px; /* Ensures additional spacing for the text if needed */
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    margin-right: 10px; /* Space between logo and message */
+    vertical-align: middle; /* Align with text */
 }

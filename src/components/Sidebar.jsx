@@ -1,53 +1,69 @@
-import React from 'react';
-import { Avatar } from '@chatscope/chat-ui-kit-react';
-import usericon from '../assets/usericon.png';
+// Sidebar.jsx
+import React from "react";
+import { Avatar } from "@chatscope/chat-ui-kit-react";
+import usericon from "../assets/usericon.png";
+import "./Sidebar.css"; // If you want separate styling for the sidebar
+import { useNavigate } from "react-router-dom";
 
-function Sidebar() {
+const Sidebar = ({ handleNewChat, handleTabClick, handleProfileBtn, handleSend }) => {
+    const navigate = useNavigate();
 
-    
+    const handleLogout = () => {
+        const deleteCookie = (name) => {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+        };
 
-    const handleNewChat = () => {
-        setMessages([{
-          message: "Welcome to Digital Therapy – Your Space for Mental Health Support! We’re here to provide you with tools, guidance, and a supportive environment to help you navigate through your mental health challenges. How can we help?",
-          sentTime: "just now",
-          sender: "ChatGPT"
-        }]);
-      };
-    
-      const handleTabClick = (message) => {
-        setMessages(prevMessages => [
-          ...prevMessages,
-          {
-            message,
-            sender: "user"
-          }
-        ]);
-        processMessageToChatGPT([...messages, { message, sender: "user" }]);
-      };
+        deleteCookie("userRole");
+        navigate("/");
+    };
 
+    const handleTabSelect = (tab) => {
+        // Send the appropriate message to ChatGPT when a tab is clicked
+        switch (tab) {
+            case "How to reduce stress":
+                handleSend("How can I reduce stress?");
+                break;
+            case "I am not well":
+                handleSend("I am not feeling well.");
+                break;
+            case "My friends tried to tease me":
+                handleSend("My friends have been teasing me.");
+                break;
+            default:
+                break;
+        }
+    };
 
-  return (
-    <div className="sidebar">
-        <h2>Digital Therapy</h2>
-        <button className="new-chat-button" onClick={handleNewChat}>
-          <span className="icon">+</span>
-          New Chat
-        </button>
-        <div className="tab-container">
-          <button className="tab-button" onClick={() => handleTabClick("How to reduce stress")}>How to reduce stress?</button>
-          <button className="tab-button" onClick={() => handleTabClick("I am not well")}>I am not well</button>
-          <button className="tab-button" onClick={() => handleTabClick("My friends tried to tease me")}>My friends tried to tease me</button>
+    return (
+        <div className="sidebar">
+            <h2>Digital Therapy</h2>
+            <button className="new-chat-button" onClick={handleNewChat}>
+                <span className="icon">+</span>
+                New Chat
+            </button>
+            <div className="tab-container">
+                <button className="tab-button" onClick={() => handleTabSelect("How to reduce stress")}>
+                    How to reduce stress?
+                </button>
+                <button className="tab-button" onClick={() => handleTabSelect("I am not well")}>
+                    I am not well
+                </button>
+                <button className="tab-button" onClick={() => handleTabSelect("My friends tried to tease me")}>
+                    My friends tried to tease me
+                </button>
+            </div>
+
+            <div className="sidebar-bottom">
+                <button className="profile-button" onClick={handleProfileBtn}>
+                    <Avatar src={usericon} name="profile" />
+                    <span className="profile-text">Profile</span>
+                </button>
+                <button className="logout-button" onClick={handleLogout}>
+                    <span className="profile-text">Logout</span>
+                </button>
+            </div>
         </div>
-
-        {/* Profile button at the bottom */}
-        <div className="sidebar-bottom">
-          <button className="profile-button" onClick={() => alert('Profile clicked')}>
-            <Avatar src={usericon} name="profile " />
-            <span className='profile-text'>Profile</span>
-          </button>
-        </div>
-      </div>
-  );
-}
+    );
+};
 
 export default Sidebar;
