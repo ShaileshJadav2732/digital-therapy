@@ -14,6 +14,7 @@ const App = () => {
 				<Route path="/Ai-Chat" element={<ChatAi />} />
 				<Route path="/hello" element={console.log("hello")} />
 				<p>hello world2</p>
+				<h1>hello world 3</h1>
 			</Routes>
 		</Router>
 	);
