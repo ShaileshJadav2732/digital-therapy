@@ -13,7 +13,7 @@ const App = () => {
 				<Route path="/child-profile" element={<ChildProfile />} />
 				<Route path="/Ai-Chat" element={<ChatAi />} />
 				<Route path="/hello" element={console.log("hello")} />
-				<p>hello world</p>
+				<p>hello world2</p>
 			</Routes>
 		</Router>
 	);
